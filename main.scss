@@ -1,0 +1,345 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;500;900&family=Poppins&display=swap");
+:root {
+    //COLOR YELLOW
+    --color-yellow: hsl(56, 100%, 50%);
+    --color-yellow-dark: hsl(56, 100%, 36%);
+    --color-yellow-light: hsl(55, 67%, 78%);
+
+    //BLACK COLOR
+    --color-black: hsl(0, 0%, 7%);
+    --color-black-light: hsl(0, 0%, 15%);
+
+    //RED COLOR
+    --color-red: hsl(359, 77%, 56%);
+
+    //GRID GAP
+    --grid-column-gap: clamp(2rem, 6vw, 8rem);
+    --grid-row-gap: 4rem;
+
+    //GRID
+    --two-col-layout: 2;
+    --three-col-layout: 3;
+    --total-stack-size: 4;
+}
+
+@media only screen and (max-width: 56.25em) {
+    :root {
+        --two-col-layout: 1;
+    }
+}
+@media only screen and (max-width: 59em) {
+    :root {
+        --three-col-layout: 2;
+    }
+}
+@media only screen and (max-width: 37.5em) {
+    :root {
+        --three-col-layout: 1;
+    }
+}
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+html {
+    box-sizing: border-box;
+    font-size: 65%;
+    scroll-behavior: smooth;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+body {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #fff;
+
+    button {
+        font-size: 1.5rem;
+        padding: 8px 10px;
+        font-style: italic;
+        text-transform: uppercase;
+        background-color: var(--color-yellow);
+        border: 2px solid var(--color-yellow);
+        font-weight: 600;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        cursor: pointer;
+        backdrop-filter: blur(5px);
+        transition: all 0.2s;
+    }
+    button:hover {
+        background-color: transparent;
+        color: #fff;
+    }
+
+    section:nth-child(odd) {
+        background-color: var(--color-black);
+    }
+    section:nth-child(even) {
+        background-color: var(--color-black-light);
+    }
+
+    .header {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        z-index: 100;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.15));
+        color: #fff;
+        .header-nav {
+            display: flex;
+            padding: 10px 0px;
+            justify-content: space-between;
+            align-items: center;
+            .nav-hamburger {
+                display: none;
+                @media only screen and (max-width: 50em) {
+                    display: block;
+                }
+            }
+            .logo-content {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+
+                .logo {
+                    font-size: 3rem;
+                    font-weight: 600;
+                    letter-spacing: 3px;
+                    @media only screen and (max-width: 50em) {
+                        font-size: 2.5rem;
+                    }
+                }
+                .nav-icon {
+                    transition: all 0.5s;
+                    @media only screen and (max-width: 50em) {
+                        height: 40px;
+                        width: 40px;
+                    }
+                }
+
+                &:hover > .nav-icon {
+                    transform: rotate(180deg);
+                }
+            }
+
+            ul {
+                @media only screen and (max-width: 50em) {
+                    display: none;
+                }
+                display: flex;
+                font-size: 1.7rem;
+                font-weight: 600;
+                list-style: none;
+                text-transform: uppercase;
+
+                li {
+                    a:after {
+                        background-color: var(--color-yellow);
+                        content: "";
+                        position: absolute;
+                        width: 90%;
+                        left: -100%;
+                        height: 2px;
+                        bottom: 10px;
+                        transition: all 0.5s;
+                    }
+                    a:hover:after {
+                        left: 5%;
+                    }
+                    position: relative;
+                    overflow: hidden;
+                    padding: 10px;
+                    font-style: italic;
+                    letter-spacing: 1.2px;
+                    cursor: pointer;
+                    button {
+                        letter-spacing: 1.2px;
+                        text-transform: uppercase;
+                        font-size: 1.7rem;
+                        padding: 4px 10px;
+                        font-weight: 600;
+                        font-style: italic;
+                        background-color: var(--color-yellow);
+                        border: 2px solid var(--color-yellow);
+                        border-radius: 5px;
+                        transition: all 0.2s;
+                        cursor: pointer;
+                        &:hover {
+                            background-color: inherit;
+                            color: #fff;
+                        }
+                    }
+                    &:hover {
+                        color: var(--color-yellow);
+                    }
+                }
+            }
+        }
+    }
+    .section-hero {
+        background: #18122b;
+        height: max(100vh, 60rem);
+        overflow: hidden;
+        background-image: url("./image/hero-background.webp");
+        backdrop-filter: blur(10px);
+        background-size: cover;
+        .hero-box {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            .hero-image-content {
+                height: 100vh;
+                width: 100%;
+                right: 50%;
+                transform: translate(50%, 00%);
+                position: absolute;
+                padding-top: 3.4rem;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                flex-direction: column;
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 100vh;
+                    background-image: url("/image/hero-image.png");
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-position-y: bottom;
+                    background-size: contain;
+                    @media only screen and (max-width: 50em) {
+                        background-size: cover;
+                    }
+                }
+            }
+            h1 {
+                padding: 0px 3.6rem;
+                font-size: clamp(2.5rem, 3vw, 3rem);
+                z-index: 5;
+                text-transform: uppercase;
+                margin-bottom: 20px;
+                text-shadow: 2px 5px 5px rgba(0, 0, 0, 0.7), 0px -4px 5px rgba(0, 0, 0, 0.5);
+                animation: moveInLeft 1s ease-out;
+                @media only screen and (max-width: 50em) {
+                    text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.7), 0px -1px 1px rgba(0, 0, 0, 0.5);
+                }
+            }
+            p {
+                padding: 0px 3.6rem;
+                font-size: 1.9rem;
+                z-index: 5;
+                text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3), 0px -4px 10px rgba(0, 0, 0, 0.5);
+                animation: moveInRight 1s ease-out;
+            }
+            .hero-box-buttons {
+                padding: 2rem 3.6rem;
+                z-index: 5;
+                @media only screen and (max-width: 50em) {
+                    display: flex;
+                }
+                button {
+                    margin-right: 10px;
+                }
+            }
+
+            @keyframes moveInLeft {
+                0% {
+                    opacity: 0;
+                    transform: translateX(-100px);
+                }
+
+                80% {
+                    transform: translateX(10px);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translate(0);
+                }
+            }
+
+            @keyframes moveInRight {
+                0% {
+                    opacity: 0;
+                    transform: translateX(100px);
+                }
+
+                80% {
+                    transform: translateX(-10px);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translate(0);
+                }
+            }
+        }
+    }
+    .section-aboutus {
+        padding: 5rem;
+        @media only screen and (max-width: 50em) {
+            padding: 1.5rem;
+        }
+        .aboutus {
+            display: grid;
+            grid-template-columns: repeat(var(--two-col-layout), minmax(min-content, 1fr));
+            column-gap: var(--grid-column-gap);
+            .section-aboutus-images {
+                position: relative;
+                figure {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    img {
+                        position: absolute;
+                        cursor: pointer;
+                        top: calc(var(--i) * 90px);
+                        left: calc(var(--i) * 120px);
+                        outline: 5px solid #fff;
+                        transition: all 0.3s;
+                        margin-top: -1rem;
+                        @media only screen and (max-width: 50em) {
+                            position: relative;
+                            top: 0px;
+                            left: 0px;
+                            margin-top: 2rem;
+                        }
+                        &:hover {
+                            z-index: calc(var(--total-stack-size) - var(--i));
+                            transform: scale(1.1);
+                            @media only screen and (max-width: 50em) {
+                                transform: none;
+                            }
+                        }
+                    }
+                }
+            }
+            .section-aboutus-info {
+                h2 {
+                    margin-bottom: 1rem;
+                    text-transform: uppercase;
+                }
+                p {
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+    }
+
+    .container {
+        max-width: 1440px;
+        padding: 0 1.4rem;
+        margin: 0 auto;
+    }
+}
