@@ -17,7 +17,7 @@ hero.addEventListener("mousemove", (e) => {
     const box = document.getElementById("section-hero");
     box.appendChild(div);
     setTimeout(() => {
-        div.remove();
         box.removeChild(div);
+        div.remove();
     }, 250);
 });
