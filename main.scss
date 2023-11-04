@@ -1,25 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;500;900&family=Poppins&display=swap");
+
 :root {
     //COLOR YELLOW
-    --color-yellow: hsl(56, 100%, 50%);
+    --color-yellow: #f4ce14;
     --color-yellow-dark: hsl(56, 100%, 36%);
     --color-yellow-light: hsl(55, 67%, 78%);
 
     //BLACK COLOR
-    --color-black: hsl(0, 0%, 7%);
-    --color-black-light: hsl(0, 0%, 15%);
+    --color-black: #222831;
+    --color-black-light: #393e46;
 
-    //RED COLOR
-    --color-red: hsl(359, 77%, 56%);
-
-    //GRID GAP
-    --grid-column-gap: clamp(2rem, 6vw, 8rem);
-    --grid-row-gap: 4rem;
-
-    //GRID
     --two-col-layout: 2;
-    --three-col-layout: 3;
-    --total-stack-size: 4;
+    --total-stack-size: 10;
 }
 
 @media only screen and (max-width: 56.25em) {
@@ -27,16 +19,10 @@
         --two-col-layout: 1;
     }
 }
+
 @media only screen and (max-width: 59em) {
-    :root {
-        --three-col-layout: 2;
-    }
 }
-@media only screen and (max-width: 37.5em) {
-    :root {
-        --three-col-layout: 1;
-    }
-}
+
 *,
 *::before,
 *::after {
@@ -44,10 +30,15 @@
     padding: 0;
     box-sizing: inherit;
 }
+
 html {
     box-sizing: border-box;
-    font-size: 65%;
+    font-size: 62.5%;
     scroll-behavior: smooth;
+}
+
+h1 {
+    font-size: 3.5rem;
 }
 a {
     text-decoration: none;
@@ -58,10 +49,14 @@ body {
     font-weight: 400;
     font-size: 1.6rem;
     line-height: 1.6;
-    color: #fff;
+    color: #ffffff;
+    .container {
+        max-width: 1440px;
+        padding: 0 1.4rem;
+        margin: 0 auto;
+    }
 
     button {
-        font-size: 1.5rem;
         padding: 8px 10px;
         font-style: italic;
         text-transform: uppercase;
@@ -85,15 +80,12 @@ body {
     section:nth-child(even) {
         background-color: var(--color-black-light);
     }
-
     .header {
         position: absolute;
         top: 0;
-        right: 0;
+        z-index: 10;
         width: 100%;
-        z-index: 100;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.15));
-        color: #fff;
+        background-image: linear-gradient(rgba(0, 0, 0, 1.86), rgba(0, 0, 0, 0));
         .header-nav {
             display: flex;
             padding: 10px 0px;
@@ -109,206 +101,156 @@ body {
                 display: flex;
                 align-items: center;
                 gap: 5px;
-
-                .logo {
-                    font-size: 3rem;
-                    font-weight: 600;
-                    letter-spacing: 3px;
-                    @media only screen and (max-width: 50em) {
-                        font-size: 2.5rem;
-                    }
-                }
-                .nav-icon {
-                    transition: all 0.5s;
-                    @media only screen and (max-width: 50em) {
-                        height: 40px;
-                        width: 40px;
-                    }
-                }
-
-                &:hover > .nav-icon {
-                    transform: rotate(180deg);
+            }
+            .logo {
+                font-size: 3rem;
+                font-weight: 600;
+                letter-spacing: 3px;
+                @media only screen and (max-width: 50em) {
+                    font-size: 2.5rem;
                 }
             }
-
-            ul {
+            .nav-icon {
+                transition: all 0.5s;
                 @media only screen and (max-width: 50em) {
-                    display: none;
+                    height: 40px;
+                    width: 40px;
                 }
-                display: flex;
-                font-size: 1.7rem;
+            }
+            &:hover > .nav-icon {
+                transform: rotate(180deg);
+            }
+        }
+        ul {
+            @media only screen and (max-width: 50em) {
+                display: none;
+            }
+            display: flex;
+            gap: 15px;
+            list-style: none;
+            text-transform: uppercase;
+            li {
+                position: relative;
+                padding: 5px;
+                overflow: hidden;
+                font-size: 1.8rem;
+                font-style: italic;
                 font-weight: 600;
-                list-style: none;
-                text-transform: uppercase;
-
-                li {
-                    a:after {
-                        background-color: var(--color-yellow);
-                        content: "";
-                        position: absolute;
-                        width: 90%;
-                        left: -100%;
-                        height: 2px;
-                        bottom: 10px;
-                        transition: all 0.5s;
-                    }
-                    a:hover:after {
-                        left: 5%;
-                    }
-                    position: relative;
-                    overflow: hidden;
-                    padding: 10px;
-                    font-style: italic;
-                    letter-spacing: 1.2px;
+                letter-spacing: 1.2px;
+                cursor: pointer;
+                &:hover {
+                    color: var(--color-yellow);
+                }
+                a:after {
+                    background-color: var(--color-yellow);
+                    content: "";
+                    position: absolute;
+                    width: 90%;
+                    left: -100%;
+                    height: 3px;
+                    border-radius: 30px;
+                    bottom: 0px;
+                    transition: all 0.5s;
+                }
+                a:hover:after {
+                    left: 5%;
+                }
+                &:last-child {
+                    background-color: var(--color-yellow);
+                    border: 2px solid var(--color-yellow);
+                    border-radius: 5px;
+                    transition: all 0.2s;
                     cursor: pointer;
-                    button {
-                        letter-spacing: 1.2px;
-                        text-transform: uppercase;
-                        font-size: 1.7rem;
-                        padding: 4px 10px;
-                        font-weight: 600;
-                        font-style: italic;
-                        background-color: var(--color-yellow);
-                        border: 2px solid var(--color-yellow);
-                        border-radius: 5px;
-                        transition: all 0.2s;
-                        cursor: pointer;
-                        &:hover {
-                            background-color: inherit;
-                            color: #fff;
-                        }
-                    }
+                    padding: 3px 10px;
                     &:hover {
-                        color: var(--color-yellow);
+                        background-color: inherit;
+                        color: #fff;
+                    }
+                    a:after {
+                        content: none;
                     }
                 }
             }
         }
     }
     .section-hero {
-        background: #18122b;
         height: max(100vh, 60rem);
-        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-image: url("./image/hero-background.webp");
         backdrop-filter: blur(10px);
         background-size: cover;
         .hero-box {
             height: 100%;
             width: 100%;
-            position: relative;
-            .hero-image-content {
-                height: 100vh;
-                width: 100%;
-                right: 50%;
-                transform: translate(50%, 00%);
-                position: absolute;
-                padding-top: 3.4rem;
-                display: flex;
-                justify-content: center;
-                align-items: flex-start;
-                flex-direction: column;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background-image: url("/image/hero-image.png");
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: contain;
+            @media only screen and (max-width: 50em) {
+                background-size: 175%;
+            }
 
-                &:after {
-                    content: "";
-                    position: absolute;
-                    width: 100%;
-                    height: 100vh;
-                    background-image: url("/image/hero-image.png");
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    background-position-y: bottom;
-                    background-size: contain;
-                    @media only screen and (max-width: 50em) {
-                        background-size: cover;
-                    }
-                }
+            .hero-image-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: start;
+                gap: 15px;
             }
             h1 {
-                padding: 0px 3.6rem;
-                font-size: clamp(2.5rem, 3vw, 3rem);
-                z-index: 5;
                 text-transform: uppercase;
-                margin-bottom: 20px;
-                text-shadow: 2px 5px 5px rgba(0, 0, 0, 0.7), 0px -4px 5px rgba(0, 0, 0, 0.5);
-                animation: moveInLeft 1s ease-out;
-                @media only screen and (max-width: 50em) {
-                    text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.7), 0px -1px 1px rgba(0, 0, 0, 0.5);
-                }
+                font-size: clamp(2.5rem, 3vw, 3rem);
+                text-shadow: 2px 5px 5px rgba(0, 0, 0, 0.7), 0px -4px 12px rgba(0, 0, 0, 0.5);
+                animation: moveInLeft 0.5s ease-out;
             }
             p {
-                padding: 0px 3.6rem;
-                font-size: 1.9rem;
-                z-index: 5;
-                text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3), 0px -4px 10px rgba(0, 0, 0, 0.5);
-                animation: moveInRight 1s ease-out;
+                font-size: 1.8rem;
+                text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.4), 0px -4px 10px rgba(0, 0, 0, 0.5);
+                animation: moveInRight 0.5s ease-out;
             }
             .hero-box-buttons {
-                padding: 2rem 3.6rem;
-                z-index: 5;
-                @media only screen and (max-width: 50em) {
-                    display: flex;
-                }
-                button {
-                    margin-right: 10px;
-                }
+                display: flex;
+                gap: 10px;
             }
-
-            @keyframes moveInLeft {
-                0% {
-                    opacity: 0;
-                    transform: translateX(-100px);
-                }
-
-                80% {
-                    transform: translateX(10px);
-                }
-
-                100% {
-                    opacity: 1;
-                    transform: translate(0);
-                }
-            }
-
-            @keyframes moveInRight {
-                0% {
-                    opacity: 0;
-                    transform: translateX(100px);
-                }
-
-                80% {
-                    transform: translateX(-10px);
-                }
-
-                100% {
-                    opacity: 1;
-                    transform: translate(0);
-                }
-            }
+        }
+        .hero-section-mouseClick {
+            position: absolute;
+            animation: onclick 0.1s;
+            z-index: -1;
+            box-shadow: rgba(195, 184, 34, 0.188) 0px 0px 30px 30px;
         }
     }
     .section-aboutus {
-        padding: 5rem;
-        @media only screen and (max-width: 50em) {
-            padding: 1.5rem;
-        }
         .aboutus {
+            padding: 3rem 3rem;
             display: grid;
             grid-template-columns: repeat(var(--two-col-layout), minmax(min-content, 1fr));
-            column-gap: var(--grid-column-gap);
+            grid-row-gap: 0rem;
+            grid-column-gap: 5rem;
+            justify-content: center;
+            text-align: justify;
             .section-aboutus-images {
-                position: relative;
+                align-items: baseline;
+                justify-content: baseline;
                 figure {
                     display: flex;
-                    align-items: center;
+                    position: relative;
                     flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
                     img {
                         position: absolute;
                         cursor: pointer;
-                        top: calc(var(--i) * 90px);
-                        left: calc(var(--i) * 120px);
                         outline: 5px solid #fff;
                         transition: all 0.3s;
-                        margin-top: -1rem;
+                        top: calc(var(--i) * 55px);
+                        left: calc(var(--i) * 140px);
+                        outline: 5px solid #fff;
                         @media only screen and (max-width: 50em) {
                             position: relative;
                             top: 0px;
@@ -326,6 +268,8 @@ body {
                 }
             }
             .section-aboutus-info {
+                display: flex;
+                flex-direction: column;
                 h2 {
                     margin-bottom: 1rem;
                     text-transform: uppercase;
@@ -336,10 +280,38 @@ body {
             }
         }
     }
+}
+@keyframes onclick {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
 
-    .container {
-        max-width: 1440px;
-        padding: 0 1.4rem;
-        margin: 0 auto;
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
     }
 }
