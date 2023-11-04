@@ -395,7 +395,8 @@ body {
                     justify-content: space-between;
                     transition: all 0.5s;
                     .class-name {
-                        margin-top: 20px;
+                        padding: 2rem;
+                        margin-top: 10px;
                         text-transform: uppercase;
                     }
                     .class-price {
@@ -409,6 +410,7 @@ body {
                         background: rgb(96, 96, 96);
                     }
                     ul {
+                        padding: 2rem;
                         list-style: none;
                         li {
                             margin: 15px 0px;
