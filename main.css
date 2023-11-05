@@ -50,11 +50,20 @@ a {
   color: inherit;
 }
 
+hr {
+  border: 0;
+  margin: 0;
+  width: 100%;
+  height: 2px;
+  background: rgb(96, 96, 96);
+  margin-bottom: 10px;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 1.6rem;
-  line-height: 1.6;
+  line-height: 1.9;
   color: #ffffff;
 }
 body .container {
@@ -245,6 +254,9 @@ body .section-hero .hero-section-mouseClick {
   z-index: -1;
   box-shadow: rgba(195, 184, 34, 0.15) 0px 0px 30px 30px;
 }
+body .section-aboutus {
+  padding: clamp(4rem, 10vw, 10rem) 0;
+}
 body .section-aboutus .aboutus {
   overflow: hidden;
   padding: 3rem 3rem;
@@ -303,13 +315,16 @@ body .section-aboutus .aboutus .section-aboutus-info h2 {
 body .section-aboutus .aboutus .section-aboutus-info p {
   margin-bottom: 2rem;
 }
+body .section-ourteam {
+  padding: clamp(4rem, 10vw, 12rem) 0;
+}
 body .section-ourteam .ourteam {
   padding: 2rem 3rem;
 }
 body .section-ourteam .ourteam .title {
   text-align: center;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 body .section-ourteam .ourteam .team-members {
   display: grid;
@@ -380,6 +395,9 @@ body .section-ourteam .ourteam .team-members .team-member .member-desc {
   top: 0px;
   transition: all 0.5s ease;
 }
+body .section-memberships {
+  padding: clamp(4rem, 10vw, 8rem) 0;
+}
 body .section-memberships .memberships {
   padding: 3rem 3rem;
   position: relative;
@@ -387,6 +405,7 @@ body .section-memberships .memberships {
 body .section-memberships .memberships .title {
   text-align: center;
   text-transform: uppercase;
+  margin-bottom: 40px;
 }
 body .section-memberships .memberships .classes {
   display: grid;
@@ -422,13 +441,6 @@ body .section-memberships .memberships .classes .class .class-price {
   font-size: 1.8rem;
   margin-bottom: 20px;
 }
-body .section-memberships .memberships .classes .class hr {
-  border: 0;
-  margin: 0;
-  width: 100%;
-  height: 2px;
-  background: rgb(96, 96, 96);
-}
 body .section-memberships .memberships .classes .class ul {
   padding: 2rem;
   list-style: none;
@@ -452,6 +464,9 @@ body .section-memberships .memberships .classes .class:hover {
   transform: scale(1.05);
   box-shadow: rgba(0, 0, 0, 0.29) 0px 10px 36px 0px, rgba(0, 0, 0, 0.218) 0px 0px 0px 1px;
 }
+body .section-reviews {
+  padding: clamp(4rem, 10vw, 8rem) 0;
+}
 body .section-reviews .reviews {
   padding: 2rem 3rem;
   position: relative;
@@ -459,7 +474,7 @@ body .section-reviews .reviews {
 body .section-reviews .reviews .title {
   text-align: center;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 body .section-reviews .reviews .review {
   display: grid;
@@ -539,6 +554,7 @@ body .section-contact {
   position: relative;
 }
 body .section-contact .contact {
+  overflow: hidden;
   display: grid;
   grid-template-columns: repeat(var(--two-col-layout), minmax(min-content, 1fr));
   grid-column-gap: 1rem;
@@ -546,16 +562,21 @@ body .section-contact .contact {
   justify-content: space-around;
 }
 body .section-contact .contact .contactus {
-  padding: 2rem 2rem;
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+body .section-contact .contact .contactus form {
   width: 100%;
 }
-body .section-contact .contact .contactus input::-webkit-outer-spin-button,
-body .section-contact .contact .contactus input::-webkit-inner-spin-button {
+body .section-contact .contact .contactus form input::-webkit-outer-spin-button,
+body .section-contact .contact .contactus form input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-body .section-contact .contact .contactus input,
-body .section-contact .contact .contactus textarea {
+body .section-contact .contact .contactus form input,
+body .section-contact .contact .contactus form textarea {
   margin: 0;
   color: #fff;
   font-size: 1.8rem;
@@ -566,17 +587,17 @@ body .section-contact .contact .contactus textarea {
   outline: none;
   position: relative;
 }
-body .section-contact .contact .contactus textarea {
+body .section-contact .contact .contactus form textarea {
   min-height: 50px;
 }
-body .section-contact .contact .contactus .class-input {
+body .section-contact .contact .contactus form .class-input {
   position: relative;
   margin: 20px 0px;
   overflow: hidden;
   border-bottom: 1px solid #6a6a6a;
   cursor: text;
 }
-body .section-contact .contact .contactus .class-input:after {
+body .section-contact .contact .contactus form .class-input:after {
   content: "";
   position: absolute;
   width: 100%;
@@ -587,27 +608,91 @@ body .section-contact .contact .contactus .class-input:after {
   transform: translateX(-100%);
   transition: all 0.5s;
 }
-body .section-contact .contact .contactus .class-input:hover:after {
+body .section-contact .contact .contactus form .class-input:hover:after {
   transform: translateX(0%);
 }
-body .section-contact .contact .contactus button {
+body .section-contact .contact .contactus form button {
   padding: 10px 30px;
   font-size: 1.5rem;
 }
-body .section-contact .contact .contactus button:hover {
+body .section-contact .contact .contactus form button:hover {
   background-color: var(--color-yellow);
   color: #464646;
 }
 body .section-contact .contact .map {
-  background-color: red;
+  width: 100%;
+  height: 450px;
+}
+body .section-contact .contact .map iframe {
+  width: 100%;
+  height: 100%;
+}
+body .section-footer {
+  padding: clamp(4rem, 10vw, 8rem) 0;
+  background-color: #161616;
+}
+body .section-footer .footer-box {
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(var(--three-col-layout), minmax(min-content, 1fr));
+  grid-column-gap: 10rem;
+  grid-row-gap: 5rem;
+  justify-content: space-around;
+  padding: 30px 30px;
+}
+body .section-footer .footer-box .contact-details .contact-company-address {
+  font-size: 1.8rem;
+  margin: 10px 0px;
+}
+body .section-footer .footer-box .contact-social-links {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  gap: 4rem;
+}
+body .section-footer .footer-box .footer-nav h3 {
+  margin: 10px 0px;
+}
+body .section-footer .footer-box .footer-nav li {
+  font-size: 1.7rem;
+  list-style: none;
+}
+body .section-footer .footer-box .newsletter h3 {
+  margin: 10px 0px;
+}
+body .section-footer .footer-box .newsletter input {
+  padding: 8px 10px;
+  width: 60%;
+  background-color: #414141;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 1.7rem;
+  outline: none;
+}
+body .section-footer .footer-box .newsletter button {
+  font-weight: 900;
+  padding: 8px 20px;
+}
+body .section-footer .copyrights {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+body .section-footer .copyrights div {
+  font-size: 1.8rem;
+  margin: 20px;
 }
 
 [data-aos=image-rotateIn] {
-  transform: rotate(360deg);
+  transform: rotate(360deg) scale(0.5);
   transition-property: transform, opacity;
 }
 [data-aos=image-rotateIn].aos-animate {
-  transform: rotate(90deg);
+  transform: rotate(90deg) scale(1);
 }
 
 @keyframes onclick {
