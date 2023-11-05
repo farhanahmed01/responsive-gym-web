@@ -249,7 +249,8 @@ body {
         }
     }
     .section-aboutus {
-        padding: clamp(4rem, 10vw, 10rem) 0;
+        padding-top: clamp(4rem, 10vw, 10rem);
+
         .aboutus {
             overflow: hidden;
             padding: 3rem 3rem;
@@ -263,25 +264,23 @@ body {
                 align-items: baseline;
                 justify-content: baseline;
                 figure {
-                    display: flex;
-                    position: relative;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
+                    display: grid;
+                    grid-template-rows: 150px 150px 150px;
+                    @media only screen and (max-width: 50em) {
+                        grid-template-rows: 190px 190px 190px;
+                        grid-row-gap: 3rem;
+                    }
                     img {
-                        position: absolute;
-                        cursor: pointer;
-                        outline: 5px solid #fff;
-                        transition: all 0.3s;
-                        top: calc(var(--i) * 55px);
-                        left: calc(var(--i) * 140px);
-                        outline: 5px solid #fff;
                         @media only screen and (max-width: 50em) {
-                            position: relative;
                             top: 0px;
                             left: 0px;
-                            margin-top: 2rem;
                         }
+                        position: relative;
+                        top: calc(var(--i) * -55px);
+                        left: calc(var(--i) * 90px);
+                        outline: 5px solid #fff;
+                        transition: all 0.3s;
+                        cursor: pointer;
                         &:hover {
                             z-index: calc(var(--total-stack-size) - var(--i));
                             transform: scale(1.1);

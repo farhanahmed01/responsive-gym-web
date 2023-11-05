@@ -255,7 +255,7 @@ body .section-hero .hero-section-mouseClick {
   box-shadow: rgba(195, 184, 34, 0.15) 0px 0px 30px 30px;
 }
 body .section-aboutus {
-  padding: clamp(4rem, 10vw, 10rem) 0;
+  padding-top: clamp(4rem, 10vw, 10rem);
 }
 body .section-aboutus .aboutus {
   overflow: hidden;
@@ -272,27 +272,27 @@ body .section-aboutus .aboutus .section-aboutus-images {
   justify-content: baseline;
 }
 body .section-aboutus .aboutus .section-aboutus-images figure {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-rows: 150px 150px 150px;
+}
+@media only screen and (max-width: 50em) {
+  body .section-aboutus .aboutus .section-aboutus-images figure {
+    grid-template-rows: 190px 190px 190px;
+    grid-row-gap: 3rem;
+  }
 }
 body .section-aboutus .aboutus .section-aboutus-images figure img {
-  position: absolute;
-  cursor: pointer;
+  position: relative;
+  top: calc(var(--i) * -55px);
+  left: calc(var(--i) * 90px);
   outline: 5px solid #fff;
   transition: all 0.3s;
-  top: calc(var(--i) * 55px);
-  left: calc(var(--i) * 140px);
-  outline: 5px solid #fff;
+  cursor: pointer;
 }
 @media only screen and (max-width: 50em) {
   body .section-aboutus .aboutus .section-aboutus-images figure img {
-    position: relative;
     top: 0px;
     left: 0px;
-    margin-top: 2rem;
   }
 }
 body .section-aboutus .aboutus .section-aboutus-images figure img:hover {
