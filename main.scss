@@ -75,21 +75,23 @@ body {
     }
 
     button {
-        padding: 8px 10px;
+        padding: 8px 25px;
         font-style: italic;
         text-transform: uppercase;
         background-color: var(--color-yellow);
-        border: 2px solid var(--color-yellow);
+        border: none;
+        color: #000;
         font-weight: 600;
-        border-radius: 5px;
         margin-bottom: 5px;
         cursor: pointer;
         backdrop-filter: blur(5px);
         transition: all 0.2s;
+        clip-path: polygon(5% 0, 100% 0%, 95% 100%, 0% 100%);
     }
     button:hover {
-        background-color: transparent;
-        color: #fff;
+        background-color: #000;
+        color:var(--color-yellow);
+        clip-path: polygon(5% 0, 100% 0%, 95% 100%, 0% 100%);
     }
 
     section:nth-child(odd) {
@@ -194,13 +196,21 @@ body {
         }
     }
     .section-hero {
-        height: max(100vh, 60rem);
+        position: relative;
+        overflow: hidden;
+        height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
         background-image: url("./image/hero-background.webp");
         backdrop-filter: blur(10px);
         background-size: cover;
+        @media only screen and (max-width: 50em) {
+            background-image: url("/image/hero-image.png"),url("./image/hero-background.webp");
+            background-position: bottom,center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
         .hero-box {
             height: 100%;
             width: 100%;
@@ -212,7 +222,7 @@ body {
             background-position: bottom;
             background-size: contain;
             @media only screen and (max-width: 50em) {
-                background-size: 175%;
+                background-image: none
             }
 
             .hero-image-content {
@@ -227,6 +237,9 @@ body {
                 font-size: clamp(2.5rem, 3vw, 3rem);
                 text-shadow: 2px 5px 5px rgba(0, 0, 0, 0.7), 0px -4px 12px rgba(0, 0, 0, 0.5);
                 animation: moveInLeft 0.5s ease-out;
+                @media only screen and (max-width: 50em) {
+                    text-shadow: none
+                }
             }
             p {
                 font-size: 1.8rem;
@@ -496,7 +509,7 @@ body {
                             height: 50%;
                             z-index: 11;
                             position: absolute;
-                            background-color: hsl(55deg 100% 49%);
+                            background-color: rgb(250, 229, 0);
                             transition: 0.3s;
                             bottom: 0px;
                         }
@@ -506,7 +519,7 @@ body {
                             height: 100%;
                             position: absolute;
                             border-radius: 100%;
-                            background-image: linear-gradient(90deg, hsl(0, 0%, 13%), hsla(48, 100%, 35%, 0.174), hsl(55deg 100% 49%) 100%);
+                            background-image: linear-gradient(90deg, rgb(33, 33, 33), hsla(48, 100%, 35%, 0.174), rgb(250, 229, 0) 100%);
                         }
                         &:hover:before {
                             width: 100%;
@@ -682,6 +695,61 @@ body {
             }
         }
     }
+    .offerModal{
+        animation: movemodel 0.5s forwards;
+        animation-delay: 1.5s;
+        opacity: block;
+        position: fixed;
+        background-color: red;
+        padding: 35px 35px;
+        right: -80%;
+        top: 50%;
+        width: 420px;
+        transform: translate(50%, -50%);
+        z-index: 15;
+        background: rgba(255, 252, 252, 0.14);
+        border-radius: 16px;
+        backdrop-filter: blur(15px);
+-webkit-backdrop-filter: blur(10px);
+@media only screen and (max-width: 50em) {
+    display: none;
+}
+        .modal-content{
+            display: flex;   
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: column;
+            align-items: center;
+            
+            h2{
+                font-size: 35px;
+            }
+            p{
+                font-size: 15px;
+            }
+            h1{
+                color: #ff4646;
+                font-weight: bolder;
+            }
+            button{
+                width: 180px;
+                height: 40px;
+                clip-path:none;
+            }
+            .close-button{
+                width: 150px;
+                background-color: #414141;
+                color: #f4ce14;
+            }.close-button:hover{
+                background-color: #000;
+            }
+            div{
+                margin-top: 10px;
+                gap: 15px;
+                display: flex;
+            }
+        }
+    }
 }
 
 [data-aos="image-rotateIn"] {
@@ -722,5 +790,14 @@ body {
     100% {
         opacity: 1;
         transform: translate(0);
+    }
+}
+
+@keyframes movemodel {
+    0% {
+        right: -80%;
+    }
+    100% {
+        right: 20%;
     }
 }
