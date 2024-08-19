@@ -9,4 +9,4 @@ VFitClub - A sleek fitness website designed with HTML5, CSS3, and Javascript, fe
 
 ### Live Demo
 
-[https://vfitclub.netlify.app/](https://vfitclub-gym-web.vercel.app/)
+[https://vfitclub-gym-web.vercel.app]
